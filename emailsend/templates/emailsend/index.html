@@ -1,0 +1,40 @@
+{% extends "master.html" %}
+
+{% block title %}
+    Sending Emails Django
+{% endblock title %}
+
+{% block content %}
+    <section id="emailContainer">
+        <form action="{% url 'home' %}" method="POST" class='form-container'>
+            {% csrf_token %}
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class=" {{message.tags}} ">
+                        {{message}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <h1 class='title'>Sending email using django</h1>
+            <div class="form-div">
+                <div class="form-element">
+                    <label for="client-name">Client Name</label>
+                    <input type="text" name="clientName" class="client-name" placeholder="Enter Name" required>
+                </div>
+                <div class="form-element">
+                    <label for="client-email">Email Address</label>
+                    <input type="email" name="clientEmail" class="client-email" placeholder="Enter Email Address" required>
+                </div>
+                <div class="form-element">
+                    <label for="client-message">Messsage</label>
+                    <textarea name="clientMessage" class="client-message" placeholder="Type in your Message" required></textarea>
+                </div>
+                <div class="button-div">
+                    <button class="send-btn" type="submit">Send Email</button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+{% endblock content %}

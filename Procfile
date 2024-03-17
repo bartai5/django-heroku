@@ -1,0 +1,1 @@
+web gunicorn sendEmail.wisgi:application --log-file -
